@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/player_home_header_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textSize="36dp"
+        android:textStyle="bold"
+        android:text="PLAYER DETAILS"/>
+
+    <ImageSwitcher
+        android:id="@+id/player_headshot_imageswitcher"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginLeft="28dp"
+        android:layout_below="@id/player_home_header_text">
+        <ImageView
+            android:id="@+id/player_headshot_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/stafford_headshot"
+            android:scaleType="centerInside"/>
+    </ImageSwitcher>
+
+    <Button
+        android:id="@+id/request_new_image"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_below="@id/player_headshot_imageswitcher"
+        android:layout_alignLeft="@id/player_headshot_imageswitcher"
+        android:layout_alignRight="@id/player_headshot_imageswitcher"
+        android:text="Take New Picture"/>
+
+    <TextView
+        android:id="@+id/player_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/player_headshot_imageswitcher"
+        android:layout_below="@id/player_home_header_text"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentRight="true"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:text="Matthew Stafford"/>
+
+    <TextView
+        android:id="@+id/player_position_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/player_headshot_imageswitcher"
+        android:layout_below="@id/player_name_textview"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentRight="true"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        android:text="Quarterback"/>
+
+    <TextView
+        android:id="@+id/player_team_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/player_headshot_imageswitcher"
+        android:layout_below="@id/player_position_textview"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentRight="true"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        android:text="Detroit Lions"/>
+
+    <TextView
+        android:id="@+id/other_players"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/request_new_image"
+        android:gravity="center"
+        android:text="OTHER AVAILABLE PLAYERS"/>
+
+    <ListView
+        android:id="@+id/available_players_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="100dp"
+        android:layout_below="@id/other_players">
+    </ListView>
+
+    <Button
+        android:id="@+id/add_new_players"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="ADD NEW PLAYER"/>
+
+
+
+
+
+</RelativeLayout>
