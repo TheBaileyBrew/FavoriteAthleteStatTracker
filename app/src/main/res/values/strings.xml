@@ -2,5 +2,5 @@
     <string name="app_name">FavoriteAthleteStatTracker</string>
     <string name="title_home">Player Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_stats">Statistics</string>
+    <string name="title_add">Add/Update Player</string>
 </resources>
