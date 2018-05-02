@@ -14,66 +14,62 @@
         android:gravity="center"
         android:textSize="36dp"
         android:textStyle="bold"
-        android:text="PLAYER DETAILS"/>
+        android:text="CURRENT PLAYER"/>
 
-    <ImageSwitcher
-        android:id="@+id/player_headshot_imageswitcher"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    <RelativeLayout
+        android:id="@+id/player_details_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:layout_below="@id/player_home_header_text">
         <ImageView
             android:id="@+id/player_headshot_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:background="@drawable/stafford_headshot"
             android:scaleType="centerInside"/>
-    </ImageSwitcher>
 
-    <TextView
-        android:id="@+id/player_name_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/player_headshot_imageswitcher"
-        android:layout_below="@id/player_home_header_text"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_half_margin"
-        android:gravity="center"
-        android:textSize="26dp"
-        android:textStyle="bold"
-        android:text="Matthew Stafford"/>
+        <TextView
+            android:id="@+id/player_name_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/player_headshot_image"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:gravity="center"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            android:text="Matthew Stafford"/>
 
-    <TextView
-        android:id="@+id/player_position_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/player_headshot_imageswitcher"
-        android:layout_below="@id/player_name_textview"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_half_margin"
-        android:gravity="center"
-        android:textSize="22dp"
-        android:textStyle="italic"
-        android:text="Quarterback"/>
+        <TextView
+            android:id="@+id/player_position_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/player_headshot_image"
+            android:layout_below="@id/player_name_textview"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:textStyle="italic"
+            android:text="Quarterback"/>
 
-    <TextView
-        android:id="@+id/player_team_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/player_headshot_imageswitcher"
-        android:layout_below="@id/player_position_textview"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_half_margin"
-        android:gravity="center"
-        android:textSize="22dp"
-        android:textStyle="italic"
-        android:text="Detroit Lions"/>
+        <TextView
+            android:id="@+id/player_team_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/player_headshot_image"
+            android:layout_below="@id/player_position_textview"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:textStyle="italic"
+            android:text="Detroit Lions"/>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/player_stats"
@@ -82,26 +78,323 @@
         android:layout_marginTop="4dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_below="@id/player_headshot_imageswitcher"
+        android:layout_below="@id/player_details_layout"
         android:gravity="center"
         android:text="PLAYER STATISTICS"/>
 
-    <ListView
+    <RelativeLayout
         android:id="@+id/current_player_listview"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
-        android:layout_below="@id/player_stats">
-    </ListView>
+        android:layout_marginHorizontal="@dimen/activity_horizontal_half_margin"
+        android:layout_below="@id/player_stats"
+        android:paddingTop="@dimen/activity_vertical_half_margin">
+        <!-- Passing Details -->
+        <TextView
+            android:id="@+id/passing_yards_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textSize="24sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="PASSING YARDS"/>
+        <TextView
+            android:id="@+id/passing_yards_qty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/passing_yards_text"
+            android:layout_marginHorizontal="@dimen/activity_vertical_half_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:text="8888"/>
+        <TextView
+            android:id="@+id/passing_yards_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/passing_yards_qty_text"
+            android:layout_alignRight="@id/passing_yards_qty_text"
+            android:layout_alignBottom="@id/passing_yards_qty_text"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="  97"/>
+        <!-- Rushing Details -->
+        <TextView
+            android:id="@+id/rushing_yards_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passing_yards_text"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textSize="24sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="RUSHING YARDS"/>
+        <TextView
+            android:id="@+id/rushing_yards_qty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/receiving_yards_text"
+            android:layout_below="@id/passing_yards_qty_text"
+            android:layout_marginHorizontal="@dimen/activity_vertical_half_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:text="8888"/>
+        <TextView
+            android:id="@+id/rushing_yards_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/rushing_yards_qty_text"
+            android:layout_alignRight="@id/rushing_yards_qty_text"
+            android:layout_alignBottom="@id/rushing_yards_qty_text"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="  12"/>
+        <!-- Receiving Details -->
+        <TextView
+            android:id="@+id/receiving_yards_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rushing_yards_text"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textSize="24sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="RECVING YARDS"/>
+        <TextView
+            android:id="@+id/receiving_yards_qty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/rushing_yards_text"
+            android:layout_below="@id/rushing_yards_qty_text"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:layout_marginHorizontal="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:text="8888"/>
+        <TextView
+            android:id="@+id/receiving_yards_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/receiving_yards_qty_text"
+            android:layout_alignRight="@id/receiving_yards_qty_text"
+            android:layout_alignBottom="@id/receiving_yards_qty_text"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="   1"/>
+        <!-- Touchdowns Details -->
+        <TextView
+            android:id="@+id/touchdowns_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/receiving_yards_text"
+            android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textSize="24sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="TOUCHDOWNS"/>
+        <TextView
+            android:id="@+id/touchdowns_qty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/receiving_yards_text"
+            android:layout_below="@id/receiving_yards_qty_text"
+            android:layout_marginHorizontal="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:text="8888"/>
+        <TextView
+            android:id="@+id/touchdowns_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/touchdowns_qty_text"
+            android:layout_alignRight="@id/touchdowns_qty_text"
+            android:layout_alignBottom="@id/touchdowns_qty_text"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="   4"/>
+        <!-- View Break -->
+        <View
+            android:id="@+id/scoring_view_break"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/receiving_yards_qty_text"
+            android:layout_marginRight="@dimen/activity_vertical_half_margin"
+            android:layout_alignBottom="@id/touchdowns_qty_text"
+            android:background="@color/colorPrimary"/>
 
-    <Button
-        android:id="@+id/add_new_players"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_below="@id/current_player_listview"
-        android:text="ADD NEW PLAYER"/>
+        <!-- Additional Scoring Details -->
+        <TextView
+            android:id="@+id/passing_attempts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/scoring_view_break"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="A:"/>
+        <TextView
+            android:id="@+id/passing_attempts_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/passing_attempts"
+            android:layout_marginHorizontal="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:text="888"/>
+        <TextView
+            android:id="@+id/passing_attempts_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/passing_attempts_qty"
+            android:layout_alignRight="@id/passing_attempts_qty"
+            android:layout_alignBottom="@id/passing_attempts_qty"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text=" 11"/>
+        <TextView
+            android:id="@+id/passing_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/passing_attempts_qty"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="C:"/>
+        <TextView
+            android:id="@+id/passing_complete_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/passing_complete"
+            android:layout_marginHorizontal="@dimen/activity_vertical_half_margin"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:text="888"/>
+        <TextView
+            android:id="@+id/passing_complete_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/passing_complete_qty"
+            android:layout_alignRight="@id/passing_complete_qty"
+            android:layout_alignBottom="@id/passing_complete_qty"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="  5"/>
+        <TextView
+            android:id="@+id/rushing_attempts_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/scoring_view_break"
+            android:layout_marginTop="@dimen/activity_vertical_half_margin"
+            android:layout_below="@id/passing_attempts"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="RUSHES:  "/>
+        <TextView
+            android:id="@+id/rushing_attempt_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/rushing_attempts_text"
+            android:layout_marginTop="@dimen/activity_vertical_half_margin"
+            android:layout_below="@id/passing_attempts"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:text="8888"/>
+        <TextView
+            android:id="@+id/rushing_attempt_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/rushing_attempt_qty"
+            android:layout_alignRight="@id/rushing_attempt_qty"
+            android:layout_alignBottom="@id/rushing_attempt_qty"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="   8"/>
+        <TextView
+            android:id="@+id/receiving_attempts_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/scoring_view_break"
+            android:layout_marginTop="@dimen/activity_vertical_half_margin"
+            android:layout_below="@id/rushing_attempts_text"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="CATCHES: "/>
+        <TextView
+            android:id="@+id/receiving_attempt_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/receiving_attempts_text"
+            android:layout_marginTop="@dimen/activity_vertical_half_margin"
+            android:layout_below="@id/rushing_attempts_text"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:text="8888"/>
+        <TextView
+            android:id="@+id/receiving_attempt_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/receiving_attempt_qty"
+            android:layout_alignRight="@id/receiving_attempt_qty"
+            android:layout_alignBottom="@id/receiving_attempt_qty"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="  13"/>
+        <TextView
+            android:id="@+id/interception_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/scoring_view_break"
+            android:layout_marginTop="@dimen/activity_vertical_half_margin"
+            android:layout_below="@id/receiving_attempts_text"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="ints: "/>
+        <TextView
+            android:id="@+id/interception_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/interception_text"
+            android:layout_marginTop="@dimen/activity_vertical_half_margin"
+            android:layout_below="@id/receiving_attempts_text"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:text="8888"/>
+        <TextView
+            android:id="@+id/interception_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/interception_qty"
+            android:layout_alignRight="@id/interception_qty"
+            android:layout_alignBottom="@id/interception_qty"
+            android:fontFamily="@font/digital7"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:text="   1"/>
+    </RelativeLayout>
+
 
 
 

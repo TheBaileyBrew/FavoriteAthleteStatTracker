@@ -38,6 +38,31 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     ViewPager pager;
 
+    //Integer Values For All Scorable Items
+    int passingYards;
+    int rushingYards;
+    int recvingYards;
+    int touchdowns;
+    int passAttempts;
+    int passComplete;
+    int rushAttempts;
+    int catches;
+    int interceptions;
+
+    //TextViews For Above Integers
+    TextView passingYardsDisplay;
+    TextView rushingYardsDisplay;
+    TextView recvingYardsDisplay;
+    TextView touchdownsDisplay;
+    TextView passAttemptsDisplay;
+    TextView passCompleteDisplay;
+    TextView rushAttemptDisplay;
+    TextView catchesDisplay;
+    TextView interceptionDisplay;
+
+
+
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(IconicsContextWrapper.wrap(newBase));
@@ -50,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         mBottomNavigation = findViewById(R.id.bottomNavigation);
         fab = findViewById(R.id.floating_action_button);
         initializeFragments();
+        validateTextViews();
         mBottomNavigation.setDefaultSelectedIndex(0);
         mBottomNavigation.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
             @Override
@@ -107,6 +133,25 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void validateTextViews() {
+        passingYardsDisplay = findViewById(R.id.passing_yards_actual);
+        rushingYardsDisplay = findViewById(R.id.rushing_yards_actual);
+        recvingYardsDisplay = findViewById(R.id.receiving_yards_actual);
+        touchdownsDisplay = findViewById(R.id.touchdowns_actual);
+        passAttemptsDisplay = findViewById(R.id.passing_attempts_actual);
+        passCompleteDisplay = findViewById(R.id.passing_complete_actual);
+        rushAttemptDisplay = findViewById(R.id.rushing_attempt_actual);
+        catchesDisplay = findViewById(R.id.receiving_attempt_actual);
+        interceptionDisplay = findViewById(R.id.interception_actual);
+    }
+
+    public void getStringValuesForScoringUpdates() {
+        /*
+        * This method converts the int values for scoring into Strings
+        * These values will be updated to the current user
+        */
     }
 
 
