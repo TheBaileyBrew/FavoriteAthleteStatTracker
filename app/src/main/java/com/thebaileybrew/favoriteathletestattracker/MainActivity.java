@@ -24,14 +24,16 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
 import com.mikepenz.iconics.context.IconicsContextWrapper;
+import com.xw.repo.BubbleSeekBar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private PagerAdapter mPagerAdapter;
     BottomNavigation mBottomNavigation;
@@ -49,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
     int catches;
     int interceptions;
 
+    int TotalPassingYards;
+    String formattedTotalPass = "";
+    int TotalRushingYards;
+    int TotalReceivingYards;
+
     //TextViews For Above Integers
     TextView passingYardsDisplay;
     TextView rushingYardsDisplay;
@@ -59,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
     TextView rushAttemptDisplay;
     TextView catchesDisplay;
     TextView interceptionDisplay;
+
+    TextView passingYardsTotalDisplay;
+    TextView rushingYardsTotalDisplay;
+    TextView recvingYardsTotalDisplay;
+
+    BubbleSeekBar bubbleSeekBarPassing;
+    BubbleSeekBar bubbleSeekBarRushing;
+    BubbleSeekBar bubbleSeekBarReceiving;
 
 
 
@@ -103,7 +118,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+
     }
+
 
     public void initializeFragments() {
         List<Fragment> fragments = new Vector<>();
@@ -114,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         mPagerAdapter = new com.thebaileybrew.favoriteathletestattracker.PagerAdapter(super.getSupportFragmentManager(), fragments);
         ViewPager pager = super.findViewById(R.id.viewPager);
         pager.setAdapter(this.mPagerAdapter);
+        pager.setOffscreenPageLimit(3);
 
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
@@ -121,10 +142,27 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                         fab.setVisibility(View.GONE);
                         mBottomNavigation.setSelectedIndex(0, true);
+                        passingYardsTotalDisplay = findViewById(R.id.passing_yards_actual);
+                        passingYardsTotalDisplay.setText(formattedTotalPass);
+                        rushingYardsTotalDisplay = findViewById(R.id.rushing_yards_actual);
+                        recvingYardsTotalDisplay = findViewById(R.id.receiving_yards_actual);
                         break;
                     case 1:
                         fab.setVisibility(View.GONE);
                         mBottomNavigation.setSelectedIndex(1, true);
+                        bubbleSeekBarPassing = findViewById(R.id.seekBar_passing);
+                        bubbleSeekBarRushing = findViewById(R.id.seekBar_rushing);
+                        bubbleSeekBarReceiving = findViewById(R.id.seekBar_receiving);
+                        TextView completedPass = findViewById(R.id.submit_passing_yards);
+                        completedPass.setOnClickListener(MainActivity.this);
+                        TextView completedRush = findViewById(R.id.submit_rushing_yards);
+                        completedRush.setOnClickListener(MainActivity.this);
+                        TextView completedCatch = findViewById(R.id.submit_receiving_yards);
+                        completedCatch.setOnClickListener(MainActivity.this);
+                        bubbleSeekBarPassing.getConfigBuilder().progress(0).build();
+                        bubbleSeekBarRushing.getConfigBuilder().progress(0).build();
+                        bubbleSeekBarReceiving.getConfigBuilder().progress(0).build();
+                        bubbleSeekBarProgressListeners();
                         break;
                     case 2:
                         fab.setVisibility(View.VISIBLE);
@@ -133,6 +171,58 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void bubbleSeekBarProgressListeners() {
+        bubbleSeekBarPassing.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
+            @Override
+            public void onProgressChanged(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
+                getStringValuesForScoringUpdates();
+            }
+
+            @Override
+            public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat) {
+
+            }
+
+            @Override
+            public void getProgressOnFinally(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
+
+            }
+        });
+        bubbleSeekBarRushing.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
+            @Override
+            public void onProgressChanged(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
+                getStringValuesForScoringUpdates();
+            }
+
+            @Override
+            public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat) {
+
+            }
+
+            @Override
+            public void getProgressOnFinally(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
+
+            }
+        });
+        bubbleSeekBarReceiving.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
+            @Override
+            public void onProgressChanged(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
+                getStringValuesForScoringUpdates();
+            }
+
+            @Override
+            public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat) {
+
+            }
+
+            @Override
+            public void getProgressOnFinally(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
+
+            }
+        });
+
     }
 
     public void validateTextViews() {
@@ -152,10 +242,45 @@ public class MainActivity extends AppCompatActivity {
         * This method converts the int values for scoring into Strings
         * These values will be updated to the current user
         */
+        passingYardsDisplay = findViewById(R.id.passing_yards_seekbar_display);
+        BubbleSeekBar bubbleSeekBarPassing = findViewById(R.id.seekBar_passing);
+        passingYards = bubbleSeekBarPassing.getProgress();
+        String formattedPassing = String.format(Locale.US,"%03d",passingYards);
+        passingYardsDisplay.setText(formattedPassing);
+
+        rushingYardsDisplay = findViewById(R.id.rushing_yards_seekbar_display);
+        BubbleSeekBar bubbleSeekBarRushing = findViewById(R.id.seekBar_rushing);
+        rushingYards = bubbleSeekBarRushing.getProgress();
+        String formattedRushing = String.format(Locale.US,"%03d",rushingYards);
+        rushingYardsDisplay.setText(formattedRushing);
+
+        recvingYardsDisplay = findViewById(R.id.receiving_yards_seekbar_display);
+        BubbleSeekBar bubbleSeekBarReceiving = findViewById(R.id.seekBar_receiving);
+        recvingYards = bubbleSeekBarReceiving.getProgress();
+        String formattedReceiving = String.format(Locale.US,"%03d",recvingYards);
+        recvingYardsDisplay.setText(formattedReceiving);
     }
 
 
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
 
+        switch (v.getId()) {
+            case R.id.submit_passing_yards:
+                TotalPassingYards = TotalPassingYards + passingYards;
+                formattedTotalPass = String.format(Locale.US,"%04d",TotalPassingYards);
+                break;
+            case R.id.submit_rushing_yards:
+                break;
+            case R.id.submit_receiving_yards:
+                break;
+        }
+    }
 }
 
 

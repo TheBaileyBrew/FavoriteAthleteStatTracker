@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -64,6 +64,7 @@
         android:text="888"/>
     <TextView
         android:id="@+id/submit_passing_yards"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/passing_yards_seekbar_display"
@@ -71,16 +72,26 @@
         android:textSize="18sp"
         android:textColor="@color/colorAccent"
         android:text="COMPLETED PASS"/>
-    <SeekBar
+    <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar_passing"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/passing_text_field"
+        android:layout_marginTop="@dimen/activity_vertical_half_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginHorizontal="@dimen/activity_horizontal_half_margin"
-        android:max="100"
-        android:progress="0" />
+        app:bsb_max="100"
+        app:bsb_min="-50"
+        app:bsb_progress="0"
+        app:bsb_section_count="15"
+        app:bsb_section_text_position="bottom_sides"
+        app:bsb_show_section_mark="true"
+        app:bsb_hide_bubble="true"
+        app:bsb_show_thumb_text="false"
+        app:bsb_track_color="@color/colorAccent"
+        app:bsb_second_track_color="@color/colorPrimaryDark"
+        app:bsb_touch_to_seek="true"
+        />
 
     <!-- Add a slidebar for yardage with textview display to right for confirmation -->
 
@@ -106,6 +117,7 @@
         android:text="888"/>
     <TextView
         android:id="@+id/submit_rushing_yards"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/rushing_yards_seekbar_display"
@@ -113,16 +125,26 @@
         android:textSize="18sp"
         android:textColor="@color/colorAccent"
         android:text="RUSHING ATTEMPT"/>
-    <SeekBar
+    <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar_rushing"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rushing_text_field"
+        android:layout_marginTop="@dimen/activity_vertical_half_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginHorizontal="@dimen/activity_horizontal_half_margin"
-        android:max="100"
-        android:progress="0" />
+        app:bsb_max="100"
+        app:bsb_min="-50"
+        app:bsb_progress="0"
+        app:bsb_section_count="15"
+        app:bsb_section_text_position="bottom_sides"
+        app:bsb_show_section_mark="true"
+        app:bsb_hide_bubble="true"
+        app:bsb_show_thumb_text="false"
+        app:bsb_track_color="@color/colorAccent"
+        app:bsb_second_track_color="@color/colorPrimaryDark"
+        app:bsb_touch_to_seek="true"
+        />
 
     <!-- Add a slidebar for yardage with textview display to right for confirmation-->
 
@@ -148,6 +170,7 @@
         android:text="888"/>
     <TextView
         android:id="@+id/submit_receiving_yards"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/receiving_yards_seekbar_display"
@@ -156,16 +179,26 @@
         android:textColor="@color/colorAccent"
         android:text="CATCH COMPLETE"/>
 
-    <SeekBar
+    <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar_receiving"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/receiving_text_field"
+        android:layout_marginTop="@dimen/activity_vertical_half_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginHorizontal="@dimen/activity_horizontal_half_margin"
-        android:max="100"
-        android:progress="0" />
+        app:bsb_max="100"
+        app:bsb_min="-50"
+        app:bsb_progress="0"
+        app:bsb_section_count="15"
+        app:bsb_section_text_position="bottom_sides"
+        app:bsb_show_section_mark="true"
+        app:bsb_hide_bubble="true"
+        app:bsb_show_thumb_text="false"
+        app:bsb_track_color="@color/colorAccent"
+        app:bsb_second_track_color="@color/colorPrimaryDark"
+        app:bsb_touch_to_seek="true"
+        />
 
     <Button
         android:id="@+id/touchdown_button"
