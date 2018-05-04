@@ -11,8 +11,187 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:gravity="center"
-        android:textSize="36dp"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:text="PLAYER STATS"/>
+        android:text="PLAYER SCORING"/>
+
+    <TextView
+        android:id="@+id/player_name_textview_statkeeper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_stat_keeper"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:text="MATTHEW STAFFORD"/>
+    <TextView
+        android:id="@+id/player_position_textview_statkeeper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_name_textview_statkeeper"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="QUARTERBACK"/>
+
+    <View
+        android:id="@+id/scoring_view_break"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/activity_vertical_half_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/player_position_textview_statkeeper"
+        android:background="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/passing_text_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scoring_view_break"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="PASSING YARDS: "/>
+    <TextView
+        android:id="@+id/passing_yards_seekbar_display"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_half_margin"
+        android:layout_below="@id/scoring_view_break"
+        android:layout_toRightOf="@id/passing_text_field"
+        android:fontFamily="@font/digital7"
+        android:textSize="22sp"
+        android:text="888"/>
+    <TextView
+        android:id="@+id/submit_passing_yards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/passing_yards_seekbar_display"
+        android:layout_below="@id/scoring_view_break"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:text="COMPLETED PASS"/>
+    <SeekBar
+        android:id="@+id/seekBar_passing"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passing_text_field"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_half_margin"
+        android:max="100"
+        android:progress="0" />
+
+    <!-- Add a slidebar for yardage with textview display to right for confirmation -->
+
+    <TextView
+        android:id="@+id/rushing_text_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBar_passing"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="RUSHING YARDS: "/>
+    <TextView
+        android:id="@+id/rushing_yards_seekbar_display"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_half_margin"
+        android:layout_below="@id/seekBar_passing"
+        android:layout_toRightOf="@id/passing_text_field"
+        android:fontFamily="@font/digital7"
+        android:textSize="22sp"
+        android:text="888"/>
+    <TextView
+        android:id="@+id/submit_rushing_yards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/rushing_yards_seekbar_display"
+        android:layout_below="@id/seekBar_passing"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:text="RUSHING ATTEMPT"/>
+    <SeekBar
+        android:id="@+id/seekBar_rushing"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rushing_text_field"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_half_margin"
+        android:max="100"
+        android:progress="0" />
+
+    <!-- Add a slidebar for yardage with textview display to right for confirmation-->
+
+    <TextView
+        android:id="@+id/receiving_text_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBar_rushing"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="RECVING YARDS: "/>
+    <TextView
+        android:id="@+id/receiving_yards_seekbar_display"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_half_margin"
+        android:layout_below="@id/seekBar_rushing"
+        android:layout_toRightOf="@id/passing_text_field"
+        android:fontFamily="@font/digital7"
+        android:textSize="22sp"
+        android:text="888"/>
+    <TextView
+        android:id="@+id/submit_receiving_yards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/receiving_yards_seekbar_display"
+        android:layout_below="@id/seekBar_rushing"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:text="CATCH COMPLETE"/>
+
+    <SeekBar
+        android:id="@+id/seekBar_receiving"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/receiving_text_field"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_half_margin"
+        android:max="100"
+        android:progress="0" />
+
+    <Button
+        android:id="@+id/touchdown_button"
+        android:layout_width="match_parent"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+        android:layout_below="@id/seekBar_receiving"
+        android:text="TOUCHDOWN"/>
+    <Button
+        android:id="@+id/interception_button"
+        android:layout_width="match_parent"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+        android:layout_below="@id/touchdown_button"
+        android:text="INTERCEPTION"/>
+    <Button
+        android:id="@+id/fumble_button"
+        android:layout_width="match_parent"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+        android:layout_below="@id/interception_button"
+        android:text="FUMBLE"/>
+
+    <!-- Add a slidebar for yardage with textview display to right for confirmation -->
 
 </RelativeLayout>
