@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">FavoriteAthleteStatTracker</string>
-    <string name="title_home">Player Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_add">Add/Update Player</string>
+    <string name="title_menu1">Player Home</string>
+    <string name="title_menu2">Scoring Dashboard</string>
+    <string name="title_menu3">Update Players</string>
+    <string name="title_menu4">History</string>
 </resources>

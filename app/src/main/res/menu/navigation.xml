@@ -8,18 +8,24 @@
         android:id="@+id/navigation_home"
         android:color="@color/colorPrimaryTabOne"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="@string/title_menu1" />
 
     <item
         android:id="@+id/navigation_dashboard"
         android:color="@color/colorPrimaryTabTwo"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:title="@string/title_menu2" />
 
     <item
         android:id="@+id/navigation_stats"
         android:color="@color/colorPrimaryTabThree"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_add" />
+        android:title="@string/title_menu3" />
+
+    <item
+        android:id="@+id/navigation_history"
+        android:color="@color/colorPrimaryTabFour"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_menu4" />
 
 </menu>

@@ -46,15 +46,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int recvingYards;
     int touchdowns;
     int passAttempts;
-    int passComplete;
+    String formattedPassAttempts = "";
+    int passIncomplete;
+    String formattedPassComplete = "";
     int rushAttempts;
+    String formattedRushAttempts = "";
     int catches;
+    String formattedCatches = "";
     int interceptions;
+    String formattedInterceptions = "";
 
     int TotalPassingYards;
     String formattedTotalPass = "";
     int TotalRushingYards;
+    String formattedTotalRush = "";
     int TotalReceivingYards;
+    String formattedTotalReceiving = "";
 
     //TextViews For Above Integers
     TextView passingYardsDisplay;
@@ -109,6 +116,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         fab.setVisibility(View.VISIBLE);
                         pager.setCurrentItem(2,true);
                         break;
+                    case 3:
+                        fab.setVisibility(View.GONE);
+                        pager.setCurrentItem(3, true);
+                        break;
                 }
             }
 
@@ -130,11 +141,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragments.add(Fragment.instantiate(this, PlayerHomepageFragment.class.getName()));
         fragments.add(Fragment.instantiate(this, PlayerStatsKeeperFragment.class.getName()));
         fragments.add(Fragment.instantiate(this, PlayerSettingsFragment.class.getName()));
+        fragments.add(Fragment.instantiate(this,PlayerHistoryFragment.class.getName()));
 
         mPagerAdapter = new com.thebaileybrew.favoriteathletestattracker.PagerAdapter(super.getSupportFragmentManager(), fragments);
         ViewPager pager = super.findViewById(R.id.viewPager);
         pager.setAdapter(this.mPagerAdapter);
-        pager.setOffscreenPageLimit(3);
+        pager.setOffscreenPageLimit(4);
 
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
@@ -145,7 +157,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         passingYardsTotalDisplay = findViewById(R.id.passing_yards_actual);
                         passingYardsTotalDisplay.setText(formattedTotalPass);
                         rushingYardsTotalDisplay = findViewById(R.id.rushing_yards_actual);
+                        rushingYardsTotalDisplay.setText(formattedTotalRush);
                         recvingYardsTotalDisplay = findViewById(R.id.receiving_yards_actual);
+                        recvingYardsTotalDisplay.setText(formattedTotalReceiving);
+                        passAttemptsDisplay = findViewById(R.id.passing_attempts_actual);
+                        passAttemptsDisplay.setText(formattedPassAttempts);
+                        passCompleteDisplay = findViewById(R.id.passing_complete_actual);
+                        passCompleteDisplay.setText(formattedPassComplete);
+                        rushAttemptDisplay = findViewById(R.id.rushing_attempt_actual);
+                        rushAttemptDisplay.setText(formattedRushAttempts);
+                        catchesDisplay = findViewById(R.id.receiving_attempt_actual);
+                        catchesDisplay.setText(formattedCatches);
+                        interceptionDisplay = findViewById(R.id.interception_actual);
+                        interceptionDisplay.setText(formattedInterceptions);
                         break;
                     case 1:
                         fab.setVisibility(View.GONE);
@@ -155,6 +179,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         bubbleSeekBarReceiving = findViewById(R.id.seekBar_receiving);
                         TextView completedPass = findViewById(R.id.submit_passing_yards);
                         completedPass.setOnClickListener(MainActivity.this);
+                        TextView totalPass = findViewById(R.id.submit_passing_incomplete);
+                        totalPass.setOnClickListener(MainActivity.this);
                         TextView completedRush = findViewById(R.id.submit_rushing_yards);
                         completedRush.setOnClickListener(MainActivity.this);
                         TextView completedCatch = findViewById(R.id.submit_receiving_yards);
@@ -167,6 +193,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case 2:
                         fab.setVisibility(View.VISIBLE);
                         mBottomNavigation.setSelectedIndex(2, true);
+                        break;
+                    case 3:
+                        fab.setVisibility(View.GONE);
+                        mBottomNavigation.setSelectedIndex(3,true);
                         break;
                 }
             }
@@ -272,12 +302,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.submit_passing_yards:
+                passAttempts = passAttempts + 1;
                 TotalPassingYards = TotalPassingYards + passingYards;
                 formattedTotalPass = String.format(Locale.US,"%04d",TotalPassingYards);
+                formattedPassAttempts = String.format(Locale.US,"%03d",passAttempts);
                 break;
+            case R.id.submit_passing_incomplete:
+                passIncomplete = passIncomplete + 1;
+                formattedPassComplete = String.format(Locale.US,"%03d",(passAttempts + passIncomplete));
             case R.id.submit_rushing_yards:
+                rushAttempts = rushAttempts + 1;
+                TotalRushingYards = TotalRushingYards + rushingYards;
+                formattedTotalRush = String.format(Locale.US,"%04d",TotalRushingYards);
+                formattedRushAttempts = String.format(Locale.US,"%03d",rushAttempts);
                 break;
             case R.id.submit_receiving_yards:
+                catches = catches + 1;
+                TotalReceivingYards = TotalReceivingYards + recvingYards;
+                formattedTotalReceiving = String.format(Locale.US,"%04d",TotalReceivingYards);
+                formattedCatches = String.format(Locale.US,"%03d",catches);
                 break;
         }
     }

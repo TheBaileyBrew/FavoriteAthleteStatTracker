@@ -62,16 +62,32 @@
         android:fontFamily="@font/digital7"
         android:textSize="22sp"
         android:text="888"/>
-    <TextView
-        android:id="@+id/submit_passing_yards"
-        android:clickable="true"
+    <LinearLayout
+        android:id="@+id/passing_complete_intercept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/passing_yards_seekbar_display"
         android:layout_below="@id/scoring_view_break"
-        android:textSize="18sp"
-        android:textColor="@color/colorAccent"
-        android:text="COMPLETED PASS"/>
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/submit_passing_yards"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/colorAccent"
+            android:text="COMP."/>
+        <TextView
+            android:id="@+id/submit_passing_incomplete"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/colorAccent"
+            android:text="INCOMP."/>
+    </LinearLayout>
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar_passing"
         android:layout_width="match_parent"
@@ -92,8 +108,6 @@
         app:bsb_second_track_color="@color/colorPrimaryDark"
         app:bsb_touch_to_seek="true"
         />
-
-    <!-- Add a slidebar for yardage with textview display to right for confirmation -->
 
     <TextView
         android:id="@+id/rushing_text_field"
@@ -145,8 +159,6 @@
         app:bsb_second_track_color="@color/colorPrimaryDark"
         app:bsb_touch_to_seek="true"
         />
-
-    <!-- Add a slidebar for yardage with textview display to right for confirmation-->
 
     <TextView
         android:id="@+id/receiving_text_field"
@@ -224,7 +236,5 @@
         android:layout_marginBottom="@dimen/activity_vertical_half_margin"
         android:layout_below="@id/interception_button"
         android:text="FUMBLE"/>
-
-    <!-- Add a slidebar for yardage with textview display to right for confirmation -->
 
 </RelativeLayout>

@@ -8,4 +8,5 @@
     <color name="colorPrimaryTabOne">#ffffff</color>
     <color name="colorPrimaryTabTwo">#e1e1e1</color>
     <color name="colorPrimaryTabThree">#9c9c9c</color>
+    <color name="colorPrimaryTabFour">#717171</color>
 </resources>
