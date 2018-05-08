@@ -40,7 +40,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:fontFamily="@font/digital7"
                     android:textSize="28sp"
-                    android:text="Matthew Stafford"
+                    android:text="@string/matthew_stafford"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
                 <TextView
@@ -53,7 +53,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:fontFamily="@font/digital7"
                     android:textSize="26sp"
-                    android:text="Quarterback"/>
+                    android:text="@string/quarterback"/>
                 <TextView
                     android:id="@+id/player_team_card_textview"
                     android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:fontFamily="@font/digital7"
                     android:textSize="24sp"
-                    android:text="Detroit Lions"/>
+                    android:text="@string/detroit_lions"/>
             </android.support.constraint.ConstraintLayout>
             
             

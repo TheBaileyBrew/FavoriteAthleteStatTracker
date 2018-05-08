@@ -59,31 +59,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FloatingActionButton fab;
     ViewPager pager;
 
-    //Integer Values For All Scorable Items
+    //Integer Values
     int passingYards;
     int rushingYards;
     int recvingYards;
     int touchdowns;
-    String formattedTouchdowns = "";
     int passAttempts;
-    String formattedPassAttempts = "";
     int passIncomplete;
-    String formattedPassComplete = "";
     int rushAttempts;
-    String formattedRushAttempts = "";
     int interceptions;
-    String formattedInterceptions = "";
     int fumbles;
-    String formattedFumbles = "";
-
     int TotalPassingYards;
-    String formattedTotalPass = "";
     int TotalRushingYards;
-    String formattedTotalRush = "";
     int TotalReceivingYards;
+    String formattedTouchdowns = "";
+    String formattedPassAttempts = "";
+    String formattedPassComplete = "";
+    String formattedRushAttempts = "";
+    String formattedInterceptions = "";
+    String formattedFumbles = "";
+    String formattedTotalPass = "";
+    String formattedTotalRush = "";
     String formattedTotalReceiving = "";
 
-    //TextViews For Above Integers
+    //TextViews For Value Displays on HomePage
     TextView passingYardsDisplay;
     TextView rushingYardsDisplay;
     TextView recvingYardsDisplay;
@@ -93,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView rushAttemptDisplay;
     TextView interceptionDisplay;
     TextView fumblesDisplay;
-
     TextView passingYardsTotalDisplay;
     TextView rushingYardsTotalDisplay;
     TextView recvingYardsTotalDisplay;
@@ -118,6 +116,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initializeFragments();
         validateTextViews();
+
+        /*
+        * Setting the Menu Item Click Listener
+        * Initiates the Viewpager and animates the page change
+        * Defines if the FAB is visible or invisible on MenuClick
+        */
         mBottomNavigation.setDefaultSelectedIndex(0);
         mBottomNavigation.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
             @Override
@@ -155,6 +159,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /*
+    * Created the initial collection of data for the Player Array on player_settings xml
+    * Adds player data for the CardView Recycler
+    */
     private void initializeData() {
         Players = new ArrayList<>();
         Players.add(new players("Tom Brady", "Quarterback","New England Patriots", R.drawable.brady_headshot));
@@ -164,12 +172,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Players.add(new players("Giannis Antetokounmpo","Forward/Guard","Milwaukee Bucks", R.drawable.greekfreak_headshot));
     }
 
+    //Sets the adapter for the RecyclerView
     private void initializeAdapter() {
         adapter = new RVAdapter(Players);
         recyclerView.setAdapter(adapter);
     }
 
-
+    //Creates the list of fragment pages to instantiate with the Viewpager
     public void initializeFragments() {
         List<Fragment> fragments = new Vector<>();
         fragments.add(Fragment.instantiate(this, PlayerHomepageFragment.class.getName()));
@@ -182,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pager.setAdapter(this.mPagerAdapter);
         pager.setOffscreenPageLimit(4);
 
+        //Defines the actions taken with the pager is switched from fragment to fragment
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
                 switch(position) {
@@ -255,6 +265,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    //Checks for progress change on the seekBars and gets the values to update scoring on the Homepage
     public void bubbleSeekBarProgressListeners() {
         bubbleSeekBarPassing.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
             @Override
@@ -264,12 +275,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat) {
-
             }
 
             @Override
             public void getProgressOnFinally(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
-
             }
         });
         bubbleSeekBarRushing.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
@@ -280,12 +289,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat) {
-
             }
 
             @Override
             public void getProgressOnFinally(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
-
             }
         });
         bubbleSeekBarReceiving.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
@@ -296,17 +303,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat) {
-
             }
 
             @Override
             public void getProgressOnFinally(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
-
             }
         });
 
     }
 
+    //Defines the TextViews on the HomePage
     public void validateTextViews() {
         passingYardsDisplay = findViewById(R.id.passing_yards_actual);
         rushingYardsDisplay = findViewById(R.id.rushing_yards_actual);
@@ -422,11 +428,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
         }
-    }
-
-    public void submitNewPlayer() {
-
-
     }
 }
 
