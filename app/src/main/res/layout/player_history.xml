@@ -13,6 +13,6 @@
         android:gravity="center"
         android:textSize="36dp"
         android:textStyle="bold"
-        android:text="PLAYER HISTORY"/>
+        android:text="REPORTS COMING SOON"/>
 
 </RelativeLayout>

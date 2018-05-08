@@ -20,6 +20,6 @@ public class PlayerHistoryFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.player_homepage, container, false);
+        return inflater.inflate(R.layout.player_history, container, false);
     }
 }

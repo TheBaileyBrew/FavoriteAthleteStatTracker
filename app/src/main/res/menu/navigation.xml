@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white"
+    android:background="#77000000"
+    app:bbn_itemColorActive="@android:color/white"
+    app:bbn_itemColorInactive="@color/colorPrimaryLight"
     app:bbn_rippleColor="@color/colorPrimaryRipple">
 
     <item
         android:id="@+id/navigation_home"
-        android:color="@color/colorPrimaryTabOne"
+        android:background="@color/colorPrimaryTabOne"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_menu1" />
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:color="@color/colorPrimaryTabTwo"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:background="@color/colorPrimaryTabTwo"
+        android:icon="@drawable/ic_update_black_24dp"
         android:title="@string/title_menu2" />
 
     <item
         android:id="@+id/navigation_stats"
-        android:color="@color/colorPrimaryTabThree"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:background="@color/colorPrimaryTabThree"
+        android:icon="@drawable/ic_person_add_black_24dp"
         android:title="@string/title_menu3" />
 
     <item
         android:id="@+id/navigation_history"
-        android:color="@color/colorPrimaryTabFour"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:background="@color/colorPrimaryTabFour"
+        android:icon="@drawable/ic_assessment_black_24dp"
         android:title="@string/title_menu4" />
 
 </menu>

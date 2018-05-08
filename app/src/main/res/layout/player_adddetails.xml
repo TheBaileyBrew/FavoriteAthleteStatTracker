@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:background="#33ffffff"
+        android:layout_width="375dp"
+        android:layout_height="500dp">
+
+    <TextView
+        android:id="@+id/player_add_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:textSize="36dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/digital7"
+        android:textStyle="bold"
+        android:text="ADD PLAYER"/>
+
+    <EditText
+        android:id="@+id/player_name_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_add_header"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:paddingHorizontal="@dimen/activity_horizontal_half_margin"
+        android:textColorHint="@color/colorPrimaryRipple"
+        android:shadowColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:fontFamily="@font/digital7"
+        android:hint="Enter Player Name"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <EditText
+        android:id="@+id/player_position_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_name_edit_text"
+        android:layout_marginTop="@dimen/activity_vertical_half_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:paddingHorizontal="@dimen/activity_horizontal_half_margin"
+        android:textColorHint="@color/colorPrimaryRipple"
+        android:shadowColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:fontFamily="@font/digital7"
+        android:hint="Enter Player Position"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <EditText
+        android:id="@+id/player_team_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_position_edit_text"
+        android:layout_marginTop="@dimen/activity_vertical_half_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:paddingHorizontal="@dimen/activity_horizontal_half_margin"
+        android:textColorHint="@color/colorPrimaryRipple"
+        android:shadowColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:fontFamily="@font/digital7"
+        android:hint="Enter Team Name"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <ImageButton
+        android:id="@+id/player_headshot_upload"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@id/player_team_edit_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_half_margin"
+        android:padding="4dp"
+        android:background="@drawable/ic_add_a_photo_teal_24dp"
+        android:scaleType="centerCrop"/>
+
+    <Button
+        android:id="@+id/submit_new_player"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_headshot_upload"
+        android:layout_marginTop="@dimen/activity_vertical_half_margin"
+        android:fontFamily="@font/digital7"
+        android:textSize="24dp"
+        android:textColor="@color/colorPrimaryRipple"
+        android:text="Add New Player"/>
+    </RelativeLayout>
+</RelativeLayout>

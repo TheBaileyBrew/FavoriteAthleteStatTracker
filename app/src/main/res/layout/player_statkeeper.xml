@@ -1,35 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#77000000"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/player_stat_keeper"
+        android:id="@+id/player_name_textview_statkeeper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:gravity="center"
         android:textSize="36sp"
+        android:fontFamily="@font/digital7"
         android:textStyle="bold"
-        android:text="PLAYER SCORING"/>
-
-    <TextView
-        android:id="@+id/player_name_textview_statkeeper"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/player_stat_keeper"
-        android:gravity="center"
-        android:textSize="22sp"
         android:text="MATTHEW STAFFORD"/>
+
     <TextView
         android:id="@+id/player_position_textview_statkeeper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/player_name_textview_statkeeper"
         android:gravity="center"
-        android:textSize="20sp"
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
         android:text="QUARTERBACK"/>
 
     <View
@@ -50,8 +45,9 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:text="PASSING YARDS: "/>
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
+        android:text="PASSING YARDS:"/>
     <TextView
         android:id="@+id/passing_yards_seekbar_display"
         android:layout_width="50dp"
@@ -60,34 +56,19 @@
         android:layout_below="@id/scoring_view_break"
         android:layout_toRightOf="@id/passing_text_field"
         android:fontFamily="@font/digital7"
-        android:textSize="22sp"
+        android:textSize="26sp"
         android:text="888"/>
-    <LinearLayout
-        android:id="@+id/passing_complete_intercept"
+    <TextView
+        android:id="@+id/submit_passing_yards"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/passing_yards_seekbar_display"
         android:layout_below="@id/scoring_view_break"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/submit_passing_yards"
-            android:clickable="true"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/colorAccent"
-            android:text="COMP."/>
-        <TextView
-            android:id="@+id/submit_passing_incomplete"
-            android:clickable="true"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/colorAccent"
-            android:text="INCOMP."/>
-    </LinearLayout>
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
+        android:textColor="@color/colorPrimaryLight"
+        android:text="submit yards"/>
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar_passing"
         android:layout_width="match_parent"
@@ -104,8 +85,8 @@
         app:bsb_show_section_mark="true"
         app:bsb_hide_bubble="true"
         app:bsb_show_thumb_text="false"
-        app:bsb_track_color="@color/colorAccent"
-        app:bsb_second_track_color="@color/colorPrimaryDark"
+        app:bsb_track_color="@color/colorTrackPrimary"
+        app:bsb_second_track_color="@color/colorTrackSecondary"
         app:bsb_touch_to_seek="true"
         />
 
@@ -117,7 +98,8 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
         android:text="RUSHING YARDS: "/>
     <TextView
         android:id="@+id/rushing_yards_seekbar_display"
@@ -127,7 +109,7 @@
         android:layout_below="@id/seekBar_passing"
         android:layout_toRightOf="@id/passing_text_field"
         android:fontFamily="@font/digital7"
-        android:textSize="22sp"
+        android:textSize="26sp"
         android:text="888"/>
     <TextView
         android:id="@+id/submit_rushing_yards"
@@ -136,9 +118,10 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/rushing_yards_seekbar_display"
         android:layout_below="@id/seekBar_passing"
-        android:textSize="18sp"
-        android:textColor="@color/colorAccent"
-        android:text="RUSHING ATTEMPT"/>
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
+        android:textColor="@color/colorPrimaryLight"
+        android:text="submit yards"/>
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar_rushing"
         android:layout_width="match_parent"
@@ -155,8 +138,8 @@
         app:bsb_show_section_mark="true"
         app:bsb_hide_bubble="true"
         app:bsb_show_thumb_text="false"
-        app:bsb_track_color="@color/colorAccent"
-        app:bsb_second_track_color="@color/colorPrimaryDark"
+        app:bsb_track_color="@color/colorTrackPrimary"
+        app:bsb_second_track_color="@color/colorTrackSecondary"
         app:bsb_touch_to_seek="true"
         />
 
@@ -168,7 +151,8 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
         android:text="RECVING YARDS: "/>
     <TextView
         android:id="@+id/receiving_yards_seekbar_display"
@@ -178,7 +162,7 @@
         android:layout_below="@id/seekBar_rushing"
         android:layout_toRightOf="@id/passing_text_field"
         android:fontFamily="@font/digital7"
-        android:textSize="22sp"
+        android:textSize="26sp"
         android:text="888"/>
     <TextView
         android:id="@+id/submit_receiving_yards"
@@ -187,9 +171,10 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/receiving_yards_seekbar_display"
         android:layout_below="@id/seekBar_rushing"
-        android:textSize="18sp"
-        android:textColor="@color/colorAccent"
-        android:text="CATCH COMPLETE"/>
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
+        android:textColor="@color/colorPrimaryLight"
+        android:text="SUBMIT YARDS"/>
 
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar_receiving"
@@ -207,8 +192,8 @@
         app:bsb_show_section_mark="true"
         app:bsb_hide_bubble="true"
         app:bsb_show_thumb_text="false"
-        app:bsb_track_color="@color/colorAccent"
-        app:bsb_second_track_color="@color/colorPrimaryDark"
+        app:bsb_track_color="@color/colorTrackPrimary"
+        app:bsb_second_track_color="@color/colorTrackSecondary"
         app:bsb_touch_to_seek="true"
         />
 
@@ -219,22 +204,50 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_half_margin"
         android:layout_below="@id/seekBar_receiving"
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
         android:text="TOUCHDOWN"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/touchdown_button"
+        android:orientation="horizontal">
     <Button
-        android:id="@+id/interception_button"
-        android:layout_width="match_parent"
+        android:id="@+id/incomplete_button"
+        android:layout_width="wrap_content"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_half_margin"
-        android:layout_below="@id/touchdown_button"
-        android:text="INTERCEPTION"/>
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
+        android:text="INCOMPLETE"/>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"/>
     <Button
         android:id="@+id/fumble_button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_half_margin"
-        android:layout_below="@id/interception_button"
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
         android:text="FUMBLE"/>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"/>
+    <Button
+        android:id="@+id/interception_button"
+        android:layout_width="wrap_content"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_half_margin"
+        android:fontFamily="@font/digital7"
+        android:textSize="26sp"
+        android:text="INTERCEPTION"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">FavoriteAthleteStatTracker</string>
-    <string name="title_menu1">Player Home</string>
+    <string name="title_menu1">Active Player</string>
     <string name="title_menu2">Scoring Dashboard</string>
-    <string name="title_menu3">Update Players</string>
-    <string name="title_menu4">History</string>
+    <string name="title_menu3">Add/Update Player</string>
+    <string name="title_menu4">History &amp; Reports</string>
+    <string name="matthew_stafford">MATTHEW STAFFORD</string>
 </resources>
