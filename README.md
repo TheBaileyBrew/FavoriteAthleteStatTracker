@@ -21,4 +21,5 @@ This app utilizes 2 external libraries, as well as incorporating the RecyclerVie
 
 ### Library Implementations
 Material Bottom Navigation: https://github.com/sephiroth74/Material-BottomNavigation
+
 Bubble Seekbar: https://github.com/woxingxiao/BubbleSeekBar
