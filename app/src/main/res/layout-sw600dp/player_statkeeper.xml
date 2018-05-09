@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:gravity="center"
-        android:textSize="36sp"
+        android:textSize="@dimen/tablet_header_text_size_50sp"
         android:fontFamily="@font/digital7"
         android:textStyle="bold"
         android:text="@string/matthew_stafford"/>
@@ -24,14 +24,14 @@
         android:layout_below="@id/player_name_textview_statkeeper"
         android:gravity="center"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/tablet_scoring_title_42sp"
         android:text="@string/quarterback"/>
 
     <View
         android:id="@+id/scoring_view_break"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="@dimen/activity_vertical_half_margin"
+        android:layout_height="4dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_half_margin"
         android:layout_marginRight="@dimen/activity_horizontal_half_margin"
@@ -47,36 +47,35 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:textStyle="bold"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/tablet_scoring_title_42sp"
         android:text="@string/passing_yards_submit"/>
     <TextView
         android:id="@+id/passing_yards_seekbar_display"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_half_margin"
         android:layout_below="@id/scoring_view_break"
         android:layout_toEndOf="@id/passing_text_field"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/scoreboard_large_text_90sp"
         android:text="@string/scoreboard_3eights"/>
     <TextView
         android:id="@+id/submit_passing_yards"
         android:clickable="true"
-        android:background="?attr/selectableItemBackgroundBorderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/passing_yards_seekbar_display"
-        android:layout_below="@id/scoring_view_break"
+        android:layout_alignLeft="@id/passing_text_field"
+        android:layout_below="@id/passing_text_field"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/tablet_scoring_title_42sp"
         android:textColor="@color/colorPrimaryLight"
         android:text="@string/submit_yards"/>
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar_passing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/passing_text_field"
-        android:layout_marginTop="@dimen/activity_vertical_half_margin"
+        android:layout_below="@id/submit_passing_yards"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_half_margin"
         android:layout_marginRight="@dimen/activity_horizontal_half_margin"
@@ -84,7 +83,7 @@
         app:bsb_min="-50"
         app:bsb_progress="0"
         app:bsb_section_count="15"
-        app:bsb_section_text_position="bottom_sides"
+        app:bsb_section_text_position="below_section_mark"
         app:bsb_show_section_mark="true"
         app:bsb_hide_bubble="true"
         app:bsb_show_thumb_text="false"
@@ -102,36 +101,35 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:textStyle="bold"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/tablet_scoring_title_42sp"
         android:text="@string/rushing_yards_submit"/>
     <TextView
         android:id="@+id/rushing_yards_seekbar_display"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_half_margin"
         android:layout_below="@id/seekBar_passing"
         android:layout_toEndOf="@id/passing_text_field"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/scoreboard_large_text_90sp"
         android:text="@string/scoreboard_3eights"/>
     <TextView
         android:id="@+id/submit_rushing_yards"
         android:clickable="true"
-        android:background="?attr/selectableItemBackgroundBorderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/rushing_yards_seekbar_display"
-        android:layout_below="@id/seekBar_passing"
+        android:layout_alignLeft="@id/rushing_text_field"
+        android:layout_below="@id/rushing_text_field"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/tablet_scoring_title_42sp"
         android:textColor="@color/colorPrimaryLight"
         android:text="@string/submit_yards"/>
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar_rushing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rushing_text_field"
-        android:layout_marginTop="@dimen/activity_vertical_half_margin"
+        android:layout_below="@id/submit_rushing_yards"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_half_margin"
         android:layout_marginRight="@dimen/activity_horizontal_half_margin"
@@ -139,7 +137,7 @@
         app:bsb_min="-50"
         app:bsb_progress="0"
         app:bsb_section_count="15"
-        app:bsb_section_text_position="bottom_sides"
+        app:bsb_section_text_position="below_section_mark"
         app:bsb_show_section_mark="true"
         app:bsb_hide_bubble="true"
         app:bsb_show_thumb_text="false"
@@ -157,28 +155,27 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:textStyle="bold"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/tablet_scoring_title_42sp"
         android:text="@string/recving_yards_submit"/>
     <TextView
         android:id="@+id/receiving_yards_seekbar_display"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_half_margin"
         android:layout_below="@id/seekBar_rushing"
         android:layout_toEndOf="@id/passing_text_field"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/scoreboard_large_text_90sp"
         android:text="@string/scoreboard_3eights"/>
     <TextView
         android:id="@+id/submit_receiving_yards"
         android:clickable="true"
-        android:background="?attr/selectableItemBackgroundBorderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/receiving_yards_seekbar_display"
-        android:layout_below="@id/seekBar_rushing"
+        android:layout_alignLeft="@id/receiving_text_field"
+        android:layout_below="@id/receiving_text_field"
         android:fontFamily="@font/digital7"
-        android:textSize="26sp"
+        android:textSize="@dimen/tablet_scoring_title_42sp"
         android:textColor="@color/colorPrimaryLight"
         android:text="@string/submit_yards"/>
 
@@ -186,8 +183,8 @@
         android:id="@+id/seekBar_receiving"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/receiving_text_field"
-        android:layout_marginTop="@dimen/activity_vertical_half_margin"
+        android:layout_below="@id/submit_receiving_yards"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_half_margin"
         android:layout_marginRight="@dimen/activity_horizontal_half_margin"
@@ -195,7 +192,7 @@
         app:bsb_min="-50"
         app:bsb_progress="0"
         app:bsb_section_count="15"
-        app:bsb_section_text_position="bottom_sides"
+        app:bsb_section_text_position="below_section_mark"
         app:bsb_show_section_mark="true"
         app:bsb_hide_bubble="true"
         app:bsb_show_thumb_text="false"
@@ -204,42 +201,55 @@
         app:bsb_touch_to_seek="true"
         />
 
+
+    <LinearLayout
+        android:id="@+id/lin_layout_buttons_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_half_margin"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/seekBar_receiving"
+        android:orientation="horizontal">
     <Button
         android:id="@+id/touchdown_button"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="10"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_half_margin"
-        android:layout_below="@id/seekBar_receiving"
         android:fontFamily="@font/digital7"
-        android:textSize="@dimen/standard_text_size_26sp"
+        android:textSize="@dimen/large_formatted_text_size_32sp"
         android:text="@string/touchdown"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/touchdown_button"
-        android:orientation="horizontal">
-    <Button
-        android:id="@+id/incomplete_button"
-        android:layout_width="wrap_content"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/digital7"
-        android:textSize="@dimen/standard_text_size_26sp"
-        android:text="@string/incomplete"/>
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"/>
     <Button
+        android:id="@+id/incomplete_button"
+        android:layout_width="0dp"
+        android:layout_weight="10"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/digital7"
+        android:textSize="@dimen/large_formatted_text_size_32sp"
+        android:text="@string/incomplete"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lin_layout_buttons_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_half_margin"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/lin_layout_buttons_one">
+    <Button
         android:id="@+id/fumble_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="10"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_half_margin"
         android:fontFamily="@font/digital7"
-        android:textSize="@dimen/standard_text_size_26sp"
+        android:textSize="@dimen/large_formatted_text_size_32sp"
         android:text="@string/fumble"/>
     <View
         android:layout_width="1dp"
@@ -247,12 +257,13 @@
         android:background="@color/colorPrimary"/>
     <Button
         android:id="@+id/interception_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="10"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_half_margin"
         android:fontFamily="@font/digital7"
-        android:textSize="@dimen/standard_text_size_26sp"
+        android:textSize="@dimen/large_formatted_text_size_32sp"
         android:text="@string/interception"/>
 
     </LinearLayout>
