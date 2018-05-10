@@ -59,7 +59,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FloatingActionButton fab;
     ViewPager pager;
 
-    //Integer Values
+    //Integer Values and corresponding strings
+    int homeTotal;
+    int awayTotal;
+    int homeTD;
+    int awayTD;
+    int homeFG;
+    int awayFG;
+    int homeTwo;
+    int awayTwo;
+    int homeEP;
+    int awayEP;
     int passingYards;
     int rushingYards;
     int recvingYards;
@@ -82,6 +92,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String formattedTotalRush = "";
     String formattedTotalReceiving = "";
 
+
+    String HomeTeamTotalScore = "";
+    String AwayTeamTotalScore = "";
+    String homeTeamTDCount = "";
+    String awayTeamTDCount = "";
+    String homeTeamFGCount = "";
+    String awayTeamFGCount = "";
+    String homeTeamTwoCount = "";
+    String awayTeamTwoCount = "";
+    String homeTeamEPCount = "";
+    String awayTeamEPCount = "";
+
     //TextViews For Value Displays on HomePage
     TextView passingYardsDisplay;
     TextView rushingYardsDisplay;
@@ -95,6 +117,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView passingYardsTotalDisplay;
     TextView rushingYardsTotalDisplay;
     TextView recvingYardsTotalDisplay;
+
+    TextView HomeTeamScore;
+    TextView AwayTeamScore;
+    TextView HomeTDCount;
+    TextView AwayTDCount;
+    TextView HomeFGCount;
+    TextView AwayFGCount;
+    TextView HomeTwoCount;
+    TextView AwayTwoCount;
+    TextView HomeEPCount;
+    TextView AwayEPCount;
 
     BubbleSeekBar bubbleSeekBarPassing;
     BubbleSeekBar bubbleSeekBarRushing;
@@ -115,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dialog = new Dialog(MainActivity.this);
 
         initializeFragments();
-        validateTextViews();
+
 
         /*
         * Setting the Menu Item Click Listener
@@ -137,12 +170,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         pager.setCurrentItem(1,true);
                         break;
                     case 2:
-                        fab.setVisibility(View.VISIBLE);
-                        pager.setCurrentItem(2,true);
+                        fab.setVisibility(View.GONE);
+                        pager.setCurrentItem(2, true);
                         break;
                     case 3:
+                        fab.setVisibility(View.VISIBLE);
+                        pager.setCurrentItem(3,true);
+                        break;
+                    case 4:
                         fab.setVisibility(View.GONE);
-                        pager.setCurrentItem(3, true);
+                        pager.setCurrentItem(4, true);
                         break;
                 }
             }
@@ -153,9 +190,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-
-
-
+        validateTextViews();
 
     }
 
@@ -183,19 +218,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<Fragment> fragments = new Vector<>();
         fragments.add(Fragment.instantiate(this, PlayerHomepageFragment.class.getName()));
         fragments.add(Fragment.instantiate(this, PlayerStatsKeeperFragment.class.getName()));
+        fragments.add(Fragment.instantiate(this, GameScoringFragment.class.getName()));
         fragments.add(Fragment.instantiate(this, PlayerSettingsFragment.class.getName()));
         fragments.add(Fragment.instantiate(this,PlayerHistoryFragment.class.getName()));
 
         mPagerAdapter = new com.thebaileybrew.favoriteathletestattracker.PagerAdapter(super.getSupportFragmentManager(), fragments);
         ViewPager pager = super.findViewById(R.id.viewPager);
         pager.setAdapter(this.mPagerAdapter);
+        pager.setCurrentItem(0,true);
         pager.setOffscreenPageLimit(4);
 
         //Defines the actions taken with the pager is switched from fragment to fragment
         pager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
                 switch(position) {
-                    case 0:
+                    case 0: // Individual Player Stats Display
                         fab.setVisibility(View.GONE);
                         mBottomNavigation.setSelectedIndex(0, true);
                         passingYardsTotalDisplay = findViewById(R.id.passing_yards_actual);
@@ -217,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         interceptionDisplay = findViewById(R.id.interception_actual);
                         interceptionDisplay.setText(formattedInterceptions);
                         break;
-                    case 1:
+                    case 1: // Individual Player Stat Collection
                         fab.setVisibility(View.GONE);
                         mBottomNavigation.setSelectedIndex(1, true);
                         bubbleSeekBarPassing = findViewById(R.id.seekBar_passing);
@@ -243,9 +280,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         bubbleSeekBarProgressListeners();
                         break;
                     case 2:
+                        fab.setVisibility(View.GONE);
+                        mBottomNavigation.setSelectedIndex(2,true);
+                         HomeTeamScore = findViewById(R.id.home_team_total_score_display);
+                         AwayTeamScore = findViewById(R.id.away_team_total_score_display);
+                         HomeTDCount = findViewById(R.id.home_team_td);
+                         AwayTDCount = findViewById(R.id.away_team_td);
+                         HomeFGCount = findViewById(R.id.home_team_fg);
+                         AwayFGCount = findViewById(R.id.away_team_fg);
+                         HomeTwoCount = findViewById(R.id.home_team_two);
+                         AwayTwoCount = findViewById(R.id.away_team_two);
+                         HomeEPCount = findViewById(R.id.home_team_extra);
+                         AwayEPCount = findViewById(R.id.away_team_extra);
+                         Button homeTD = findViewById(R.id.home_team_add_td_button);
+                         Button homeFG = findViewById(R.id.home_team_add_fg_button);
+                         Button homeTwo = findViewById(R.id.home_team_add_two_button);
+                         Button homeEP = findViewById(R.id.home_team_add_extra_button);
+                         homeTD.setOnClickListener(MainActivity.this);
+                         homeFG.setOnClickListener(MainActivity.this);
+                         homeTwo.setOnClickListener(MainActivity.this);
+                         homeEP.setOnClickListener(MainActivity.this);
+                         Button awayTD = findViewById(R.id.away_team_add_td_button);
+                         Button awayFG = findViewById(R.id.away_team_add_fg_button);
+                         Button awayTwo = findViewById(R.id.away_team_add_two_button);
+                         Button awayEP = findViewById(R.id.away_team_add_extra_button);
+                         awayTD.setOnClickListener(MainActivity.this);
+                         awayFG.setOnClickListener(MainActivity.this);
+                         awayTwo.setOnClickListener(MainActivity.this);
+                         awayEP.setOnClickListener(MainActivity.this);
+                         Button resetScores = findViewById(R.id.reset_all_scores);
+                         resetScores.setOnClickListener(MainActivity.this);
+
+
+
+                        break;
+                    case 3: // Add New User
                         fab.setVisibility(View.VISIBLE);
                         fab.setOnClickListener(MainActivity.this);
-                        mBottomNavigation.setSelectedIndex(2, true);
+                        mBottomNavigation.setSelectedIndex(3, true);
                         recyclerView = findViewById(R.id.main_recycler_view);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
                         recyclerView.setLayoutManager(layoutManager);
@@ -256,9 +328,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         playerTeam = findViewById(R.id.player_team_card_textview);
                         playerHeadshot = findViewById(R.id.player_image_card_header);
                         break;
-                    case 3:
+                    case 4: //History and Reports
                         fab.setVisibility(View.GONE);
-                        mBottomNavigation.setSelectedIndex(3,true);
+                        mBottomNavigation.setSelectedIndex(4,true);
                         break;
                 }
             }
@@ -321,7 +393,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         passAttemptsDisplay = findViewById(R.id.passing_attempts_actual);
         passCompleteDisplay = findViewById(R.id.passing_complete_actual);
         rushAttemptDisplay = findViewById(R.id.rushing_attempt_actual);
-
     }
 
     public void getStringValuesForScoringUpdates() {
@@ -365,6 +436,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 formattedTotalPass = String.format(Locale.US,"%04d",TotalPassingYards);
                 formattedPassComplete = String.format(Locale.US,"%04d",passIncomplete);
                 formattedPassAttempts = String.format(Locale.US,"%04d",passAttempts);
+                bubbleSeekBarPassing.setProgress(0);
                 break;
             case R.id.incomplete_button:
                 passIncomplete = passIncomplete + 1;
@@ -387,10 +459,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 TotalRushingYards = TotalRushingYards + rushingYards;
                 formattedTotalRush = String.format(Locale.US,"%04d",TotalRushingYards);
                 formattedRushAttempts = String.format(Locale.US,"%04d",rushAttempts);
+                bubbleSeekBarRushing.setProgress(0);
                 break;
             case R.id.submit_receiving_yards:
                 TotalReceivingYards = TotalReceivingYards + recvingYards;
                 formattedTotalReceiving = String.format(Locale.US,"%04d",TotalReceivingYards);
+                bubbleSeekBarReceiving.setProgress(0);
                 break;
             case R.id.floating_action_button:
                 dialog.setContentView(R.layout.player_adddetails);
@@ -427,8 +501,110 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     });
                 }
                 break;
+            case R.id.home_team_add_extra_button:
+                homeEP = homeEP + 1;
+                homeTeamEPCount = String.format(Locale.US,"%03d",homeEP);
+                HomeEPCount.setText(homeTeamEPCount);
+                homeTotal = homeTotal + 1;
+                HomeTeamTotalScore = String.format(Locale.US,"%03d",homeTotal);
+                HomeTeamScore.setText(HomeTeamTotalScore);
+                break;
+            case R.id.home_team_add_two_button:
+                homeTwo = homeTwo + 1;
+                homeTeamTwoCount = String.format(Locale.US,"%03d",homeTwo);
+                HomeTwoCount.setText(homeTeamTwoCount);
+                homeTotal = homeTotal + 2;
+                HomeTeamTotalScore = String.format(Locale.US,"%03d",homeTotal);
+                HomeTeamScore.setText(HomeTeamTotalScore);
+                break;
+            case R.id.home_team_add_fg_button:
+                homeFG = homeFG + 1;
+                homeTeamFGCount = String.format(Locale.US,"%03d",homeFG);
+                HomeFGCount.setText(homeTeamFGCount);
+                homeTotal = homeTotal + 3;
+                HomeTeamTotalScore = String.format(Locale.US,"%03d",homeTotal);
+                HomeTeamScore.setText(HomeTeamTotalScore);
+                break;
+            case R.id.home_team_add_td_button:
+                homeTD = homeTD +1;
+                homeTeamTDCount = String.format(Locale.US,"%03d",homeTD);
+                HomeTDCount.setText(homeTeamTDCount);
+                homeTotal = homeTotal + 6;
+                HomeTeamTotalScore = String.format(Locale.US,"%03d",homeTotal);
+                HomeTeamScore.setText(HomeTeamTotalScore);
+                break;
+            case R.id.away_team_add_extra_button:
+                awayEP = awayEP + 1;
+                awayTeamEPCount = String.format(Locale.US,"%03d",awayEP);
+                AwayEPCount.setText(awayTeamEPCount);
+                awayTotal = awayTotal + 1;
+                AwayTeamTotalScore = String.format(Locale.US,"%03d",awayTotal);
+                AwayTeamScore.setText(AwayTeamTotalScore);
+                break;
+            case R.id.away_team_add_two_button:
+                awayTwo = awayTwo + 1;
+                awayTeamTwoCount = String.format(Locale.US,"%03d",awayTwo);
+                AwayTwoCount.setText(awayTeamTwoCount);
+                awayTotal = awayTotal + 2;
+                AwayTeamTotalScore = String.format(Locale.US,"%03d",awayTotal);
+                AwayTeamScore.setText(AwayTeamTotalScore);
+                break;
+            case R.id.away_team_add_fg_button:
+                awayFG = awayFG + 1;
+                awayTeamFGCount = String.format(Locale.US,"%03d",awayFG);
+                AwayFGCount.setText(awayTeamFGCount);
+                awayTotal = awayTotal + 3;
+                AwayTeamTotalScore = String.format(Locale.US,"%03d",awayTotal);
+                AwayTeamScore.setText(AwayTeamTotalScore);
+                break;
+            case R.id.away_team_add_td_button:
+                awayTD = awayTD + 1;
+                awayTeamTDCount = String.format(Locale.US,"%03d",awayTD);
+                AwayTDCount.setText(awayTeamTDCount);
+                awayTotal = awayTotal + 6;
+                AwayTeamTotalScore = String.format(Locale.US,"%03d",awayTotal);
+                AwayTeamScore.setText(AwayTeamTotalScore);
+                break;
+            case R.id.reset_all_scores:
+                clearAllScores();
+                break;
         }
     }
+
+    public void clearAllScores() {
+        awayTD = 0;
+        awayTeamTDCount = String.format(Locale.US,"%03d",awayTD);
+        AwayTDCount.setText(awayTeamTDCount);
+        awayTwo = 0;
+        awayTeamTwoCount = String.format(Locale.US,"%03d",awayTwo);
+        AwayTwoCount.setText(awayTeamTwoCount);
+        awayFG = 0;
+        awayTeamFGCount = String.format(Locale.US,"%03d",awayFG);
+        AwayFGCount.setText(awayTeamFGCount);
+        awayEP = 0;
+        awayTeamEPCount = String.format(Locale.US,"%03d",awayEP);
+        AwayEPCount.setText(awayTeamEPCount);
+        awayTotal = 0;
+        AwayTeamTotalScore = String.format(Locale.US,"%03d",awayTotal);
+        AwayTeamScore.setText(AwayTeamTotalScore);
+        homeEP = 0;
+        homeTeamEPCount = String.format(Locale.US,"%03d",homeEP);
+        HomeEPCount.setText(homeTeamEPCount);
+        homeTwo = 0;
+        homeTeamTwoCount = String.format(Locale.US,"%03d",homeTwo);
+        HomeTwoCount.setText(homeTeamTwoCount);
+        homeFG = 0;
+        homeTeamFGCount = String.format(Locale.US,"%03d",homeFG);
+        HomeFGCount.setText(homeTeamFGCount);
+        homeTD = 0;
+        homeTeamTDCount = String.format(Locale.US,"%03d",homeTD);
+        HomeTDCount.setText(homeTeamTDCount);
+        homeTotal = 0;
+        HomeTeamTotalScore = String.format(Locale.US,"%03d",homeTotal);
+        HomeTeamScore.setText(HomeTeamTotalScore);
+    }
+
+
 }
 
 

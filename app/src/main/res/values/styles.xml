@@ -8,6 +8,13 @@
         <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/digital7</item>
+    </style>
+
+    <style name="BorderlessButton" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:fontFamily">@font/digital7</item>
+        <item name="android:textColor">@color/colorPrimaryRipple</item>
+        <item name="android:textSize">@dimen/scoring_button_text_size_28sp</item>
     </style>
 
 </resources>

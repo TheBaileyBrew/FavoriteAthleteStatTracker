@@ -16,4 +16,5 @@
     <dimen name="tablet_header_text_size_50sp">50sp</dimen>
     <dimen name="tablet_scoring_title_42sp">42sp</dimen>
     <dimen name="scoreboard_large_text_90sp">90sp</dimen>
+    <dimen name="scoring_button_text_size_28sp">28sp</dimen>
 </resources>
